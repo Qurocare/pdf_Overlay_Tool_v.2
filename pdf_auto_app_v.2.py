@@ -34,7 +34,7 @@ if number_part:
 # Dropdown to select the report format
 report_format = st.selectbox(
     "Select the report format",
-    ["Select format", "LPL", "DS"]
+    ["Select format", "DS"]
 )
 
 if report_format != "Select format":
