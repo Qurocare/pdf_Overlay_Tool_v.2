@@ -34,7 +34,7 @@ if number_part:
 # Dropdown to select the report format
 report_format = st.selectbox(
     "Select the report format",
-    ["Select format", "DS"]
+    ["Select format", "LPL", "DS"]
 )
 
 if report_format != "Select format":
@@ -57,29 +57,37 @@ if report_format != "Select format":
                     height=letterhead_page.mediabox.height
                 )
 
-                # Scale down the report content to fit within the adjusted dimensions
-                content_width = report_page.mediabox.width
-                content_height = report_page.mediabox.height
-                available_width = letterhead_page.mediabox.width
-                available_height = letterhead_page.mediabox.height - 160  # Leave space for header/footer
+                # If the format is LPL, simply overlay the letterhead without scaling
+                if report_format == "LPL":
+                    # Merge the letterhead and the report content without scaling
+                    new_page.merge_page(letterhead_page)
+                    new_page.merge_page(report_page)
 
-                # Calculate the scale factor
-                scale_x = available_width / content_width
-                scale_y = available_height / content_height
-                scale_factor = min(scale_x, scale_y)
+                # If the format is DS, apply scaling and overlay the letterhead
+                elif report_format == "DS":
+                    # Scale down the report content to fit within the adjusted dimensions
+                    content_width = report_page.mediabox.width
+                    content_height = report_page.mediabox.height
+                    available_width = letterhead_page.mediabox.width
+                    available_height = letterhead_page.mediabox.height - 160  # Leave space for header/footer
 
-                # Calculate the horizontal and vertical translation to center the content
-                translate_x = (available_width - (content_width * scale_factor)) / 2
-                translate_y = 60  # Adjust the bottom margin
+                    # Calculate the scale factor
+                    scale_x = available_width / content_width
+                    scale_y = available_height / content_height
+                    scale_factor = min(scale_x, scale_y)
 
-                # Apply transformations to scale and position the content
-                report_page.add_transformation([
-                    scale_factor, 0, 0, scale_factor, translate_x, translate_y
-                ])
+                    # Calculate the horizontal and vertical translation to center the content
+                    translate_x = (available_width - (content_width * scale_factor)) / 2
+                    translate_y = 60  # Adjust the bottom margin
 
-                # Merge the letterhead and the scaled report content
-                new_page.merge_page(letterhead_page)
-                new_page.merge_page(report_page)
+                    # Apply transformations to scale and position the content
+                    report_page.add_transformation([
+                        scale_factor, 0, 0, scale_factor, translate_x, translate_y
+                    ])
+
+                    # Merge the letterhead and the scaled report content
+                    new_page.merge_page(letterhead_page)
+                    new_page.merge_page(report_page)
 
                 # Add the new page to the output PDF
                 output_pdf.add_page(new_page)
