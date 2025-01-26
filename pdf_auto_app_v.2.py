@@ -2,6 +2,7 @@ import streamlit as st
 from pypdf import PdfReader, PdfWriter, PageObject
 from datetime import datetime
 from io import BytesIO
+import os
 
 # App title
 st.title("PDF Letterhead Overlay Tool")
@@ -11,7 +12,8 @@ Select the report format, upload your report, and generate the final PDF.
 """)
 
 # Fixed Letterhead Path (change this to the actual path of your fixed letterhead file)
-FIXED_LETTERHEAD_PATH = "letterhead_new_new.pdf" 
+#FIXED_LETTERHEAD_PATH = "letterhead_new_new.pdf"
+FIXED_LETTERHEAD_PATH = os.path.abspath("letterhead_new_new.pdf")
 
 # Validate the existence of the fixed letterhead
 try:
