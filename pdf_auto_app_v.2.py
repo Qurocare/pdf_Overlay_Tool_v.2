@@ -12,7 +12,7 @@ Select the report format, upload your report, and generate the final PDF.
 """)
 
 # Fixed Letterhead Path (change this to the actual path of your fixed letterhead file)
-FIXED_LETTERHEAD_PATH = "letterhead_new.pdf"
+FIXED_LETTERHEAD_PATH = "letterhead_new_new.pdf"
 
 # Validate the existence of the fixed letterhead
 try:
@@ -59,7 +59,7 @@ if report_format != "Select format":
                 )
 
                 # If the format is LPL, simply overlay the letterhead without scaling
-                if report_format == "LPL":
+                if report_format == "LPL / MTT":
                     # Merge the letterhead and the report content without scaling
                     new_page.merge_page(letterhead_page)
                     new_page.merge_page(report_page)
