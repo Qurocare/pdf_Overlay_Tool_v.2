@@ -65,7 +65,7 @@ if report_format != "Select format":
                     new_page.merge_page(report_page)
 
                 # If the format is DS, apply scaling and overlay the letterhead
-                elif report_format == "DS":
+                elif report_format == "MP":
                     # Scale down the report content to fit within the adjusted dimensions
                     content_width = report_page.mediabox.width
                     content_height = report_page.mediabox.height
