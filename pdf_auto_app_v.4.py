@@ -12,7 +12,7 @@ Select the report format, upload your report, and generate the final PDF.
 
 # Fixed PDF Paths
 FIXED_LETTERHEAD_PATH = "App Letterhead.pdf"
-FIRST_PAGE_PATH = "first page.pdf"
+#FIRST_PAGE_PATH = "first page.pdf"
 LAST_PAGE_PATH = "final page.pdf"
 
 # Load required PDFs
@@ -22,7 +22,7 @@ try:
     letterhead_page = letterhead_reader.pages[0]
 
     # First Page
-    first_page_reader = PdfReader(FIRST_PAGE_PATH)
+    #first_page_reader = PdfReader(FIRST_PAGE_PATH)
 
     # Last Page
     last_page_reader = PdfReader(LAST_PAGE_PATH)
@@ -62,8 +62,8 @@ if report_format != "Select format":
             # --------------------------------------------------
             # Add Fixed First Page(s)
             # --------------------------------------------------
-            for page in first_page_reader.pages:
-                output_pdf.add_page(page)
+            #for page in first_page_reader.pages:
+                #output_pdf.add_page(page)
 
             # --------------------------------------------------
             # Process Report Pages
