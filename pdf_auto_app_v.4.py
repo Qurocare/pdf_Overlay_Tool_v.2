@@ -11,7 +11,7 @@ Select the report format, upload your report, and generate the final PDF.
 """)
 
 # Fixed PDF Paths
-FIXED_LETTERHEAD_PATH = "letterhead_new_new.pdf"
+FIXED_LETTERHEAD_PATH = "App Letterhead.pdf"
 FIRST_PAGE_PATH = "first page.pdf"
 LAST_PAGE_PATH = "final page.pdf"
 
